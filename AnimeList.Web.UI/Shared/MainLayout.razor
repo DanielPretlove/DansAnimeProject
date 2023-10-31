@@ -1,9 +1,42 @@
 ﻿@using AnimeList.Web.UI.Components
+@using AnimeList.Web.UI.Components.Header;
+
+@inject NavigationManager _navMgr;
+@inject IJSRuntime _jsRuntime;
+
 @inherits LayoutComponentBase
 
-<div class="page">
-    <NavMenu />
+<div class="app-layout" @onclick="HandleLayoutClick">
+    <header>
+        <logo-container>
+            <NavLink Href="/">
+                <img src="" alt="Anime List Image" />
+            </NavLink>
+        </logo-container>
+        <menu-container @onclick:stopPropagation=true>
+            <NavMenu @ref="_navMenu" />
+        </menu-container>
+    </header>
     <main>
         @Body
     </main>
 </div>
+
+@code {
+    private NavMenu _navMenu;
+
+    private void HandleLayoutClick()
+    {
+        _navMenu.CloseMenu();
+        Console.WriteLine("closing menu");
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if(firstRender)
+        {
+            _navMenu.CloseMenu();
+        }
+        base.OnAfterRender(firstRender);
+    }
+}
