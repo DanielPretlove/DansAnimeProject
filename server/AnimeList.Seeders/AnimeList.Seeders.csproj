@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AnimeList.Data.Entities\AnimeList.Data.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

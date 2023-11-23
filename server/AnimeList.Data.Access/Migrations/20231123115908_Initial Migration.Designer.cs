@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnimeList.Data.Access.Migrations
 {
     [DbContext(typeof(ApplicationDataContext))]
-    [Migration("20231123113712_Initial Migration")]
+    [Migration("20231123115908_Initial Migration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -209,40 +209,40 @@ namespace AnimeList.Data.Access.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7bb59196-88d2-4611-b1a3-9aaec767d0a0"),
+                            Id = new Guid("57119219-2f62-44f8-a2af-0970ea0195cf"),
                             AccessFailCount = 0,
                             Email = "admin@gmail.com",
                             EmailConfirmed = "admin@gmail.com",
                             FirstName = "Admin",
                             LastName = "Admin",
                             LockoutEnabled = false,
-                            PasswordHash = "3A6955ECB2BE2FDE0BCE611575A9BF4DABA76FB528545C74CB0A9A00C7286F92784E03051C83861F0ABD1B9EA3AA6290A86E6B34E82FFD0F256DE4086575BD47",
+                            PasswordHash = "A3984180E6FAF1739A2449B603522B197943F5761FE021BAEC9AEC8A706264048B1EE81C896815BBCF61881B45B3EEBF4B67790819934440FAA1751191D53EDE",
                             Role = 0,
                             UserName = "Admin"
                         },
                         new
                         {
-                            Id = new Guid("115a1abc-74df-4770-9a58-245c71313b6a"),
+                            Id = new Guid("c35bdf6d-869e-4825-b7cd-957fda7e3879"),
                             AccessFailCount = 0,
                             Email = "user@gmail.com",
                             EmailConfirmed = "user@gmail.com",
                             FirstName = "User",
                             LastName = "User",
                             LockoutEnabled = false,
-                            PasswordHash = "79655CA3D52A3DBD076E5668561A28DE45BA834B3F2F6D591CB23424F31FEC18318E57822A69769911261EEDA083697E9B0CEBD9DEBF73C6742A8AD1E3130BC6",
+                            PasswordHash = "F4A38A1998C23F150102A58098694D4C03A94A6C66EC35088249D55CBE42F752DA3D0F8C31634211473D769126011F4F2C06A67310C6FEB2F700152C327FBBA2",
                             Role = 1,
                             UserName = "User"
                         },
                         new
                         {
-                            Id = new Guid("f5165b28-ce08-4527-a477-3f230402f467"),
+                            Id = new Guid("4b04ceb9-15af-42e3-b5cc-f585d3403746"),
                             AccessFailCount = 0,
                             Email = "guest@gmail.com",
                             EmailConfirmed = "guest@gmail.com",
                             FirstName = "Guest",
                             LastName = "Guest",
                             LockoutEnabled = false,
-                            PasswordHash = "9BD5E0FF0FC707C385129109707B29EAB725246D032E589E37FC14CEC24B48D7F2B5DE2193D239253C9294EE8E77E1B3D4B6EBEA81BBE50EC454A3D470DDA0B4",
+                            PasswordHash = "3964A9166A9955FE50CB4BB781671C35DFACC84DCCCA0532B0ADEFB7C1B7ED149E7F6740552591C9C0B7A4975482D52829C14A873124E397BE0B4E330C09AE9A",
                             Role = 2,
                             UserName = "Guest"
                         });

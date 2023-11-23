@@ -138,9 +138,9 @@ namespace AnimeList.Data.Access.Migrations
                 columns: new[] { "Id", "AccessFailCount", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "PasswordHash", "Role", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("115a1abc-74df-4770-9a58-245c71313b6a"), 0, "user@gmail.com", "user@gmail.com", "User", "User", false, "79655CA3D52A3DBD076E5668561A28DE45BA834B3F2F6D591CB23424F31FEC18318E57822A69769911261EEDA083697E9B0CEBD9DEBF73C6742A8AD1E3130BC6", 1, "User" },
-                    { new Guid("7bb59196-88d2-4611-b1a3-9aaec767d0a0"), 0, "admin@gmail.com", "admin@gmail.com", "Admin", "Admin", false, "3A6955ECB2BE2FDE0BCE611575A9BF4DABA76FB528545C74CB0A9A00C7286F92784E03051C83861F0ABD1B9EA3AA6290A86E6B34E82FFD0F256DE4086575BD47", 0, "Admin" },
-                    { new Guid("f5165b28-ce08-4527-a477-3f230402f467"), 0, "guest@gmail.com", "guest@gmail.com", "Guest", "Guest", false, "9BD5E0FF0FC707C385129109707B29EAB725246D032E589E37FC14CEC24B48D7F2B5DE2193D239253C9294EE8E77E1B3D4B6EBEA81BBE50EC454A3D470DDA0B4", 2, "Guest" }
+                    { new Guid("4b04ceb9-15af-42e3-b5cc-f585d3403746"), 0, "guest@gmail.com", "guest@gmail.com", "Guest", "Guest", false, "3964A9166A9955FE50CB4BB781671C35DFACC84DCCCA0532B0ADEFB7C1B7ED149E7F6740552591C9C0B7A4975482D52829C14A873124E397BE0B4E330C09AE9A", 2, "Guest" },
+                    { new Guid("57119219-2f62-44f8-a2af-0970ea0195cf"), 0, "admin@gmail.com", "admin@gmail.com", "Admin", "Admin", false, "A3984180E6FAF1739A2449B603522B197943F5761FE021BAEC9AEC8A706264048B1EE81C896815BBCF61881B45B3EEBF4B67790819934440FAA1751191D53EDE", 0, "Admin" },
+                    { new Guid("c35bdf6d-869e-4825-b7cd-957fda7e3879"), 0, "user@gmail.com", "user@gmail.com", "User", "User", false, "F4A38A1998C23F150102A58098694D4C03A94A6C66EC35088249D55CBE42F752DA3D0F8C31634211473D769126011F4F2C06A67310C6FEB2F700152C327FBBA2", 1, "User" }
                 });
 
             migrationBuilder.CreateIndex(
