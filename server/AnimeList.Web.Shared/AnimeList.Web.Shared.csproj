@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Auth\**" />
+    <Compile Remove="Models\ScheduledAnime\**" />
+    <EmbeddedResource Remove="Models\Auth\**" />
+    <EmbeddedResource Remove="Models\ScheduledAnime\**" />
+    <None Remove="Models\Auth\**" />
+    <None Remove="Models\ScheduledAnime\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AnimeList.Data.Access\AnimeList.Data.Access.csproj" />
+    <ProjectReference Include="..\AnimeList.Data.Entities\AnimeList.Data.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

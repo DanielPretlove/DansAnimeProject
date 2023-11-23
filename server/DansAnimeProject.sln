@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimeList.Data.Access", "An
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimeList.Seeders", "AnimeList.Seeders\AnimeList.Seeders.csproj", "{732E7F78-EA24-4B7B-B01C-131BEC0B5BA3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimeList.Web.UI", "AnimeList.Web.UI\AnimeList.Web.UI.csproj", "{6376DFCB-F881-4A9C-ADC9-CC81571FC56E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,10 +45,6 @@ Global
 		{732E7F78-EA24-4B7B-B01C-131BEC0B5BA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{732E7F78-EA24-4B7B-B01C-131BEC0B5BA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{732E7F78-EA24-4B7B-B01C-131BEC0B5BA3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6376DFCB-F881-4A9C-ADC9-CC81571FC56E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6376DFCB-F881-4A9C-ADC9-CC81571FC56E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6376DFCB-F881-4A9C-ADC9-CC81571FC56E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6376DFCB-F881-4A9C-ADC9-CC81571FC56E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
