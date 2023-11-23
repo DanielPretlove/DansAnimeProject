@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Auth\**" />
     <Compile Remove="ScheduledAnime\**" />
-    <EmbeddedResource Remove="Auth\**" />
     <EmbeddedResource Remove="ScheduledAnime\**" />
-    <None Remove="Auth\**" />
     <None Remove="ScheduledAnime\**" />
   </ItemGroup>
 

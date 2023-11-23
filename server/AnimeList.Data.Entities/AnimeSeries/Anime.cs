@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AnimeList.Data.Entities.Auth;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace AnimeList.Data.Entities.AnimeSeries
 {
     public class Anime : DataEntitiy
     {
+        public Guid UserId { get; set; }
         public IList<Seasons> AnimeTitles { get; set; } = new ObservableCollection<Seasons>();
     }
 }

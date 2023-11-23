@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AnimeList.Application.Services.User
+namespace AnimeList.Data.Entities.Auth
 {
-    internal class UserService
+    public enum Roles
     {
+        Admin,
+        User,
+        Guest
     }
 }

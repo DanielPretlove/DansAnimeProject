@@ -8,6 +8,6 @@ namespace AnimeList.Data.Entities
 {
     public class DataEntitiy
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

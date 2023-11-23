@@ -24,11 +24,12 @@ namespace AnimeList.Data.Access.Migrations
 
             modelBuilder.Entity("AnimeList.Data.Entities.AnimeSeries.Anime", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -37,11 +38,9 @@ namespace AnimeList.Data.Access.Migrations
 
             modelBuilder.Entity("AnimeList.Data.Entities.AnimeSeries.AnimeType", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -54,18 +53,16 @@ namespace AnimeList.Data.Access.Migrations
 
             modelBuilder.Entity("AnimeList.Data.Entities.AnimeSeries.Genre", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SeasonsId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("SeasonsId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -76,11 +73,9 @@ namespace AnimeList.Data.Access.Migrations
 
             modelBuilder.Entity("AnimeList.Data.Entities.AnimeSeries.Premired", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Order")
                         .HasColumnType("int");
@@ -99,14 +94,12 @@ namespace AnimeList.Data.Access.Migrations
 
             modelBuilder.Entity("AnimeList.Data.Entities.AnimeSeries.Seasons", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("AnimeId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("AnimeId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -132,8 +125,8 @@ namespace AnimeList.Data.Access.Migrations
                     b.Property<int>("Popularity")
                         .HasColumnType("int");
 
-                    b.Property<int>("PremiredId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PremiredId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Ranked")
                         .HasColumnType("int");
@@ -144,8 +137,8 @@ namespace AnimeList.Data.Access.Migrations
                     b.Property<double>("Score")
                         .HasColumnType("float");
 
-                    b.Property<int>("SeriesTypeId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("SeriesTypeId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Source")
                         .HasColumnType("int");
@@ -165,6 +158,91 @@ namespace AnimeList.Data.Access.Migrations
                     b.HasIndex("SeriesTypeId");
 
                     b.ToTable("Seasons");
+                });
+
+            modelBuilder.Entity("AnimeList.Data.Entities.Auth.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AccessFailCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmailConfirmed")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("7bb59196-88d2-4611-b1a3-9aaec767d0a0"),
+                            AccessFailCount = 0,
+                            Email = "admin@gmail.com",
+                            EmailConfirmed = "admin@gmail.com",
+                            FirstName = "Admin",
+                            LastName = "Admin",
+                            LockoutEnabled = false,
+                            PasswordHash = "3A6955ECB2BE2FDE0BCE611575A9BF4DABA76FB528545C74CB0A9A00C7286F92784E03051C83861F0ABD1B9EA3AA6290A86E6B34E82FFD0F256DE4086575BD47",
+                            Role = 0,
+                            UserName = "Admin"
+                        },
+                        new
+                        {
+                            Id = new Guid("115a1abc-74df-4770-9a58-245c71313b6a"),
+                            AccessFailCount = 0,
+                            Email = "user@gmail.com",
+                            EmailConfirmed = "user@gmail.com",
+                            FirstName = "User",
+                            LastName = "User",
+                            LockoutEnabled = false,
+                            PasswordHash = "79655CA3D52A3DBD076E5668561A28DE45BA834B3F2F6D591CB23424F31FEC18318E57822A69769911261EEDA083697E9B0CEBD9DEBF73C6742A8AD1E3130BC6",
+                            Role = 1,
+                            UserName = "User"
+                        },
+                        new
+                        {
+                            Id = new Guid("f5165b28-ce08-4527-a477-3f230402f467"),
+                            AccessFailCount = 0,
+                            Email = "guest@gmail.com",
+                            EmailConfirmed = "guest@gmail.com",
+                            FirstName = "Guest",
+                            LastName = "Guest",
+                            LockoutEnabled = false,
+                            PasswordHash = "9BD5E0FF0FC707C385129109707B29EAB725246D032E589E37FC14CEC24B48D7F2B5DE2193D239253C9294EE8E77E1B3D4B6EBEA81BBE50EC454A3D470DDA0B4",
+                            Role = 2,
+                            UserName = "Guest"
+                        });
                 });
 
             modelBuilder.Entity("AnimeList.Data.Entities.AnimeSeries.Genre", b =>
