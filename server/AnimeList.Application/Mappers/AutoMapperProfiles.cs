@@ -1,6 +1,8 @@
 ﻿using AnimeList.Data.Entities.AnimeSeries;
+using AnimeList.Data.Entities.Auth;
 using AnimeList.Web.Shared.Models.AnimeSeries.Anime;
 using AnimeList.Web.Shared.Models.AnimeSeries.Seasons;
+using AnimeList.Web.Shared.Models.Auth;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -28,6 +30,9 @@ namespace AnimeList.Application.Mappers
             CreateMap<SeasonsDisplayModel, Seasons>();
             CreateMap<Seasons, SeasonsEditRetrieveModel>();
             CreateMap<SeasonsEditRetrieveModel, Seasons>();
+
+            CreateMap<User, UserLoginModel>();
+            CreateMap<UserLoginModel, User>();
         }
     }
 }

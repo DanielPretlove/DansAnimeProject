@@ -1,6 +1,7 @@
 ﻿using AnimeList.Application.Mappers;
 using AnimeList.Application.Services;
 using AnimeList.Application.Services.AnimeList;
+using AnimeList.Application.Services.Auth;
 using AnimeList.Data.Access;
 using AnimeList.Data.Access.Repositories;
 using AnimeList.Data.Access.Repositories.AnimeList;
@@ -15,6 +16,7 @@ namespace AnimeList.Web.Server
         {
             services.AddScoped<AnimeService>();
             services.AddScoped<SeasonService>();
+            services.AddScoped<UserService>();
             services.AddScoped(typeof(IAnimeRepository), typeof(AnimeRepository));
             services.AddScoped(typeof(ISeasonRepository), typeof(SeasonRepository));
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);

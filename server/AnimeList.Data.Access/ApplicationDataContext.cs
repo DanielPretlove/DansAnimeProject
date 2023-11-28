@@ -29,7 +29,6 @@ namespace AnimeList.Data.Access
                 modelBuilder.Entity(entityType);
             }
 
-
             modelBuilder.Entity<User>().HasData(
                 UserSeeder.CreateUser(firstname: "Admin", lastname: "Admin", username: "Admin", email: "admin@gmail.com", emailConfirmed: "admin@gmail.com", roles: Roles.Admin, lockedEnabled: false, accessFailCount: 0),
                 UserSeeder.CreateUser(firstname: "User", lastname: "User", username: "User", email: "user@gmail.com", emailConfirmed: "user@gmail.com", roles: Roles.User, lockedEnabled: false, accessFailCount: 0),
