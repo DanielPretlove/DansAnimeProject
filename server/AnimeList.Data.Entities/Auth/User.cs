@@ -14,7 +14,6 @@ namespace AnimeList.Data.Entities.Auth
         public string Email { get; set; }
         public string EmailConfirmed { get; set; }
         public string PasswordHash { get; set; }
-        public bool IsValid { get; set; }
         public Roles Role { get; set; }
         public bool LockoutEnabled { get; set; }
         public int AccessFailCount { get; set; }

@@ -34,10 +34,11 @@ namespace AnimeList.Application.Services.Auth
 
         public async Task<UserLoginModel> Login(string username, string password)
         {
-            var user = _context.Set<UserLoginModel>().Where(u => u.UserName == username).FirstOrDefault();
-            if (user == null || password == null || username == null || user.IsValid == false)
+            var user = _context.Set<User>().Where(u => u.UserName == username).FirstOrDefault();
+            var userLoginModel = new UserLoginModel{ IsValid = BCryptNet.Verify(password, user.PasswordHash) };
+            if (user == null || password == null || username == null || userLoginModel.IsValid == false)
             {
-                return new UserLoginModel()
+                userLoginModel = new UserLoginModel()
                 {
 
                 };
@@ -45,7 +46,7 @@ namespace AnimeList.Application.Services.Auth
 
             else
             {
-                return new UserLoginModel()
+                userLoginModel =  new UserLoginModel()
                 {
                     FirstName = user.FirstName,
                     LastName = user.LastName,
@@ -56,6 +57,8 @@ namespace AnimeList.Application.Services.Auth
                     Role = user.Role
                 };
             }
+
+            return userLoginModel;
 
         }
 
