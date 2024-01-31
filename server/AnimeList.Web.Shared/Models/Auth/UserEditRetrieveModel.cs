@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AnimeList.Data.Entities.Auth;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,15 @@ using System.Threading.Tasks;
 
 namespace AnimeList.Web.Shared.Models.Auth
 {
-    internal class UserEditRetrieveModel
+    public class UserEditRetrieveModel
     {
+        public Guid Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string EmailConfirmed { get; set; }
+        public string PasswordHash { get; set; }
+        public Roles Role { get; set; }
     }
 }

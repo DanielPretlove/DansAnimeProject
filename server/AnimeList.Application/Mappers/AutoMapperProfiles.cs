@@ -33,6 +33,9 @@ namespace AnimeList.Application.Mappers
 
             CreateMap<User, UserLoginModel>();
             CreateMap<UserLoginModel, User>();
+
+            CreateMap<User, UserEditRetrieveModel>();
+            CreateMap<UserEditRetrieveModel, User>();
         }
     }
 }

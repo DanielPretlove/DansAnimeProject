@@ -2,6 +2,7 @@
 using AnimeList.Data.Entities.Auth;
 using AnimeList.Web.Shared.Models.Auth;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
@@ -18,15 +19,7 @@ namespace AnimeList.Application.Services.Auth
 {
     public class UserService
     {
-
-        // login = username, password where password returns a cookie
-        // signup = username, email, password
-        // logout // set all of them to empty maybe 
-        // add user based on role
-        // update user based on role
-        // delete user based on role
         private readonly ApplicationDataContext _context;
-        
         public UserService(ApplicationDataContext context)
         {
             _context = context;
@@ -36,6 +29,7 @@ namespace AnimeList.Application.Services.Auth
         {
             var user = _context.Set<User>().Where(u => u.UserName == username).FirstOrDefault();
             var userLoginModel = new UserLoginModel{ IsValid = BCryptNet.Verify(password, user.PasswordHash) };
+
             if (user == null || password == null || username == null || userLoginModel.IsValid == false)
             {
                 userLoginModel = new UserLoginModel()
@@ -53,7 +47,6 @@ namespace AnimeList.Application.Services.Auth
                     UserName = user.UserName,
                     Email = user.Email,
                     IsValid = BCryptNet.Verify(password, user.PasswordHash),
-                    PasswordHash = user.PasswordHash,
                     Role = user.Role
                 };
             }
@@ -62,29 +55,52 @@ namespace AnimeList.Application.Services.Auth
 
         }
 
-        public async Task SignUp(string username, string password)
+        public async Task<UserEditRetrieveModel> SignUp(User user)
         {
+            await _context.AddAsync(user);
+            var hashedPassword = BCryptNet.HashPassword(user.PasswordHash);
+            await _context.SaveChangesAsync();
+			return new UserEditRetrieveModel() 
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
+                Email = user.Email,
+                EmailConfirmed = user.EmailConfirmed,
+                PasswordHash = hashedPassword,
+                Role = Roles.User
+            };
+        }
+
+        public async Task<UserLoginModel> Logout(string username)
+        {
+            var user = _context.Set<UserEditRetrieveModel>().Where(u => u.UserName == username).FirstOrDefault();
+            return new UserLoginModel()
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
+                Email = user.Email,
+                IsValid = false,
+                PasswordHash = user.PasswordHash,
+                Role = user.Role
+            };
 
         }
 
-        public async Task Logout(string username, string password)
+        public async Task<UserEditRetrieveModel?> UpdateUser(UserEditRetrieveModel user)
         {
-
+            _context.Set<UserEditRetrieveModel>().Entry(user).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return user;
         }
 
-        public async Task AddNewUser(string username, string password)
+        public async Task<User> DeleteUser(Guid id)
         {
-
-        }
-
-        public async Task UpdateUser(string username, string password)
-        {
-
-        }
-
-        public async Task DeleteUser(string username, string password)
-        {
-
+            var result = _context.Set<User>().Where(u => u.Id == id).FirstOrDefault();
+            _context.Set<User>().Remove(result);
+            await _context.SaveChangesAsync();
+            return result;
         }
     }
 }
